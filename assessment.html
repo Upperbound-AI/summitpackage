@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Assessment — Upperbound.io x The ADHD Execs</title>
+<meta name="description" content="A 60-minute AI business audit with Juliet Robinson. Walk away with a personalized roadmap for automating your business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #FAF7F4;
+    --bg2:     #F2E4DD;
+    --surface: #F9EDE8;
+    --text:    #1A0610;
+    --muted:   #6B3A4E;
+    --plum:    #9B5B8A;
+    --plum-dk: #7B3B6E;
+    --blush:   #C47A8A;
+    --gold:    #B8845A;
+    --border:  rgba(26,6,16,0.09);
+    --border2: rgba(26,6,16,0.15);
+    --plum-bg: rgba(155,91,138,0.07);
+    --plum-bd: rgba(155,91,138,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    padding: 1.25rem 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: var(--plum-dk); }
+  .nav-back { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 4px; transition: color .15s; }
+  .nav-back:hover { color: var(--plum); }
+
+  .section { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+  .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--blush);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;
+  }
+
+  .eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blush); }
+
+  /* ── HERO ── */
+  .hero { padding: 3rem 1.5rem 2rem; }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -.01em;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--plum); }
+
+  .hero-sub {
+    font-size: 17px; color: var(--muted);
+    line-height: 1.75; font-weight: 300;
+    max-width: 520px; margin-bottom: 2rem;
+  }
+
+  /* ── FOR YOU ── */
+  .for-you-list { display: flex; flex-direction: column; }
+
+  .for-item {
+    display: flex; align-items: flex-start;
+    gap: .75rem; font-size: 15px; color: var(--text);
+    padding: .875rem 0; border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .for-item:last-child { border-bottom: none; }
+
+  .for-item::before { content: '✦'; color: var(--plum); font-size: 11px; flex-shrink: 0; margin-top: 3px; }
+
+  /* ── WHAT YOU GET ── */
+  .deliverables {
+    display: flex; flex-direction: column; gap: .625rem;
+  }
+
+  .deliverable {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.125rem;
+    display: grid; grid-template-columns: 36px 1fr; gap: .75rem;
+    align-items: start;
+  }
+
+  .d-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: var(--plum-bg); border: 1px solid var(--plum-bd);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  .d-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; color: var(--text); }
+  .d-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── UPGRADE PATH ── */
+  .upgrade-box {
+    background: linear-gradient(135deg, var(--plum-bg), rgba(196,122,138,0.06));
+    border: 1px solid var(--plum-bd);
+    border-radius: 14px; padding: 1.5rem 1.5rem;
+  }
+
+  .upgrade-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--plum); margin-bottom: .625rem;
+  }
+
+  .upgrade-box h3 { font-size: 1.2rem; margin-bottom: .5rem; color: var(--text); }
+  .upgrade-box h3 em { font-style: italic; color: var(--plum); }
+  .upgrade-box p { font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+  .upgrade-math {
+    display: flex; align-items: center; gap: .75rem;
+    margin-top: 1rem; flex-wrap: wrap;
+  }
+
+  .upgrade-pill {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 8px; padding: .5rem .875rem;
+    font-size: 13px; color: var(--text); font-weight: 500;
+  }
+
+  .upgrade-arrow { color: var(--plum); font-size: 16px; }
+  .upgrade-pill.result { background: var(--plum); color: #FAF7F4; border-color: var(--plum); }
+
+  /* ── JULIET ── */
+  .juliet-box {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+  }
+
+  .juliet-photo {
+    width: 80px; height: 80px; border-radius: 50%;
+    object-fit: cover; object-position: center top;
+    border: 2px solid var(--plum-bd); flex-shrink: 0;
+  }
+
+  .juliet-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; margin-bottom: .2rem;
+  }
+
+  .juliet-title { font-size: 13px; color: var(--plum); font-weight: 500; margin-bottom: .625rem; }
+  .juliet-bio { font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+  /* ── PRICING ── */
+  .pricing-wrap { display: flex; flex-direction: column; gap: .875rem; }
+
+  .price-option {
+    background: #fff; border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+    cursor: pointer; transition: border-color .15s, box-shadow .15s;
+    position: relative;
+  }
+
+  .price-option.featured {
+    border-color: var(--plum-bd);
+    box-shadow: 0 4px 24px rgba(155,91,138,0.08);
+  }
+
+  .price-option::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px; border-radius: 14px 14px 0 0;
+    background: linear-gradient(90deg, var(--plum), var(--blush));
+    opacity: 0; transition: opacity .15s;
+  }
+
+  .price-option.featured::before { opacity: 1; }
+
+  .price-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    background: var(--plum); color: #FAF7F4;
+    border-radius: 100px; padding: 3px 10px;
+    margin-bottom: .75rem;
+  }
+
+  .price-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: .25rem; }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem; font-weight: 600; color: var(--text);
+    margin-bottom: .25rem;
+  }
+
+  .price-amount sup { font-size: 1rem; vertical-align: super; font-weight: 400; }
+  .price-note { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; }
+
+  .btn-book {
+    display: block; width: 100%; padding: 14px 24px;
+    border-radius: 8px; background: var(--plum); color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    font-size: 15px; text-align: center; border: none; cursor: pointer;
+    transition: background .15s, transform .1s; text-decoration: none;
+  }
+
+  .btn-book:hover { background: var(--plum-dk); }
+  .btn-book:active { transform: scale(.98); }
+
+  .btn-book-outline {
+    display: block; width: 100%; padding: 13px 24px;
+    border-radius: 8px; background: transparent; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    font-size: 14px; text-align: center;
+    border: 1px solid var(--border2); cursor: pointer;
+    transition: background .15s, color .15s; text-decoration: none;
+  }
+
+  .btn-book-outline:hover { background: var(--surface); color: var(--text); }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0; cursor: pointer;
+  }
+
+  .faq-q {
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 1rem;
+    font-size: 15px; font-weight: 500; color: var(--text);
+  }
+
+  .faq-arrow { color: var(--muted); font-size: 16px; flex-shrink: 0; transition: transform .2s; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { display: none; font-size: 14px; color: var(--muted); line-height: 1.65; padding-top: .625rem; font-weight: 300; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── STICKY ── */
+  .sticky-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fff; border-top: 1px solid var(--border);
+    padding: .875rem 1.5rem;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem;
+    z-index: 100; transform: translateY(100%);
+    transition: transform .3s ease;
+    box-shadow: 0 -4px 24px rgba(26,6,16,0.07);
+  }
+
+  .sticky-bar.visible { transform: translateY(0); }
+
+  .sticky-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; color: var(--plum);
+  }
+
+  .sticky-label { font-size: 11px; color: var(--muted); }
+
+  .sticky-btn {
+    background: var(--plum); color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    font-size: 14px; padding: 11px 20px; border-radius: 8px;
+    border: none; cursor: pointer; white-space: nowrap;
+    flex-shrink: 0; transition: background .15s; text-decoration: none;
+  }
+
+  .sticky-btn:hover { background: var(--plum-dk); }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); max-width: 680px; margin: 0 auto; }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 1.75rem 1.5rem;
+    max-width: 680px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .5rem; padding-bottom: 5rem;
+  }
+
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 600; color: var(--plum-dk); }
+  .footer-text { font-size: 12px; color: var(--muted); }
+  .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1   { animation: fadeUp .5s ease both; }
+  .hero-sub  { animation: fadeUp .5s .1s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">The ADHD Execs</div>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<!-- HERO -->
+<section class="section hero">
+  <div class="eyebrow">AI Automation Assessment</div>
+  <h1>Let's look at your<br>business and find<br>your <em>hidden hours.</em></h1>
+  <p class="hero-sub" id="hero-cta-anchor">You're already in motion. You just need an expert eye to show you exactly where AI can save you time, remove the bottlenecks, and help your business run without you in it every single hour.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOR YOU -->
+<section class="section">
+  <div class="eyebrow">Is this you?</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.5rem">This is for you <em>if —</em></h2>
+  <div class="for-you-list">
+    <div class="for-item">You're comfortable with tech but know you're not using your tools to their full potential</div>
+    <div class="for-item">You're doing things manually that should be automated — you just don't know what or how</div>
+    <div class="for-item">You want a real expert to look at your business and tell you exactly what to change</div>
+    <div class="for-item">You're ready to invest in a roadmap that actually gets implemented</div>
+    <div class="for-item">You're tired of Googling and guessing — you want someone who does this every day</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT YOU GET -->
+<section class="section">
+  <div class="eyebrow">What's included</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.5rem">Your 60-minute <em>deep dive</em></h2>
+  <div class="deliverables">
+    <div class="deliverable">
+      <div class="d-icon">🔍</div>
+      <div>
+        <div class="d-title">Full Business Audit</div>
+        <div class="d-desc">Juliet reviews your current tools, workflows, and daily operations to find exactly where time and money are being lost.</div>
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="d-icon">🗺️</div>
+      <div>
+        <div class="d-title">Personalized AI Roadmap</div>
+        <div class="d-desc">You walk away with a clear, prioritized list of what to automate, what to ditch, and which AI tools are actually right for your business.</div>
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="d-icon">🤖</div>
+      <div>
+        <div class="d-title">Tool Stack Recommendations</div>
+        <div class="d-desc">No generic advice. Juliet recommends the specific tools — GHL, AI employees, automations — that fit your business type, size, and goals.</div>
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="d-icon">📋</div>
+      <div>
+        <div class="d-title">Written Summary Delivered After the Call</div>
+        <div class="d-desc">Everything from the session documented and sent to you — so you have a clear reference for what to implement and in what order.</div>
+      </div>
+    </div>
+    <div class="deliverable">
+      <div class="d-icon">💬</div>
+      <div>
+        <div class="d-title">7-Day Follow-Up Access</div>
+        <div class="d-desc">Questions after the call? You get one week of direct message access to Juliet to make sure nothing falls through the cracks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- UPGRADE PATH -->
+<section class="section">
+  <div class="eyebrow">Ready to go further?</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.25rem">Your assessment <em>pays for itself.</em></h2>
+  <div class="upgrade-box">
+    <div class="upgrade-label">✦ The setup credit</div>
+    <h3>If you love what you hear and want Upperbound to <em>build it for you —</em></h3>
+    <p>Your $497 assessment fee rolls directly into the $997 done-for-you system setup. We build your entire AI business system — GHL pipelines, automations, AI employee, and anything else your audit reveals — so you only owe $500 more. The audit becomes free when you upgrade.</p>
+    <div class="upgrade-math">
+      <div class="upgrade-pill">$997 setup</div>
+      <div class="upgrade-arrow">−</div>
+      <div class="upgrade-pill">$497 assessment</div>
+      <div class="upgrade-arrow">=</div>
+      <div class="upgrade-pill result">$500 remaining</div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:.875rem;line-height:1.6">💳 Payment plans via Klarna available for both the assessment and setup package.</p>
+    <div style="display:none">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- JULIET -->
+<section class="section">
+  <div class="eyebrow">Your guide</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.5rem">You're in <em>good hands.</em></h2>
+  <div class="juliet-box">
+    <img src="juliet.jpg" alt="Juliet Robinson" class="juliet-photo">
+    <div>
+      <div class="juliet-name">Juliet Robinson</div>
+      <div class="juliet-title">Co-Founder & COO, Upperbound.io</div>
+      <p class="juliet-bio">I've spent years watching local small businesses struggle to implement the tech they need to grow — not because they aren't smart enough, but because nobody showed them what was possible. I built Upperbound to fix that. Every business I audit gets the same thing: an honest look, a real roadmap, and no fluff.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="eyebrow">Investment</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.5rem">Choose how you'd like <em>to pay.</em></h2>
+  <div class="pricing-wrap">
+
+    <div class="price-option featured">
+      <div class="price-badge">Most popular</div>
+      <div class="price-title">Pay in Full — $497</div>
+      <div class="price-amount"><sup>$</sup>297 <span style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)">due today</span></div>
+      <p class="price-note">$297 now to reserve · remaining $200 due 24 hours before your call · Full $497 credited toward $997 setup if you upgrade</p>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:1rem;padding:.625rem .875rem;background:var(--surface);border-radius:8px;line-height:1.55">💳 <strong>Payment plans available via Klarna</strong> — split into 4 interest-free payments at checkout</div>
+      <a href="YOUR_GHL_CHECKOUT_FULL" class="btn-book">Reserve My Assessment — $297 Today →</a>
+    </div>
+
+    <div class="price-option">
+      <div class="price-title">eWN Member Split Pay</div>
+      <div class="price-amount"><sup>$</sup>247 <span style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted)">today</span></div>
+      <p class="price-note">$247 now to reserve · $250 due 24 hours before your call · Full $497 still credited toward setup if you upgrade</p>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:1rem;padding:.625rem .875rem;background:var(--surface);border-radius:8px;line-height:1.55">💳 <strong>Klarna available</strong> — split either payment into 4 interest-free installments</div>
+      <a href="YOUR_GHL_CHECKOUT_SPLIT" class="btn-book-outline">Reserve with Split Pay — $247 Today →</a>
+    </div>
+
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:1rem;line-height:1.6;text-align:center">Spots are limited. Juliet takes a small number of assessments each month to ensure every client gets full attention.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section" style="padding-bottom:5rem">
+  <div class="eyebrow">Questions</div>
+  <h2 style="font-size:clamp(1.5rem,5vw,2.25rem);margin-bottom:1.5rem">Good questions <em>deserve real answers.</em></h2>
+  <div class="faq-list">
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What happens after I book? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Once payment is confirmed, you'll receive a calendar link to book your 60-minute call at a time that works for you. You'll also get a short pre-call intake form so Juliet can come prepared with your business already in mind.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I need to be on GoHighLevel already? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Nope. The assessment works for any business using any tools — or no tools at all. Juliet will assess what you have and recommend what you actually need, not what she assumes you should have.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What if I want the done-for-you setup after the call? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Your $497 assessment fee rolls directly toward the $997 setup package. You'll only owe $500 more. There's no pressure — the audit is complete and valuable on its own. But most clients leave the call ready to move forward.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How is the split pay option different? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Same assessment, same everything. You pay $247 today to reserve your spot at the eWN member rate, then the remaining $250 is due 24 hours before your call. Klarna is available to split either payment into 4 interest-free installments. The full $497 still credits toward setup if you choose to move forward.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What's the $997 setup and what does it include? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">It's your complete AI business system — built and installed for you by the Upperbound team. Exactly what's included depends on your audit results. It could include GHL pipeline setup, an AI employee, a DBR campaign, automations, or any combination your business actually needs. You don't pay for things you don't need.</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">The ADHD Execs · Upperbound.io</div>
+  <p class="footer-text">
+    <a href="mailto:hello@upperbound.io" class="footer-link">hello@upperbound.io</a>
+    &nbsp;·&nbsp;
+    <a href="https://upperbound.io" class="footer-link">upperbound.io</a>
+  </p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky-bar">
+  <div>
+    <div class="sticky-price">$497</div>
+    <div class="sticky-label">AI Assessment · 60 min with Juliet</div>
+  </div>
+  <a href="#pricing" class="sticky-btn">Book My Call</a>
+</div>
+
+<script>
+  function toggleFaq(el) {
+    var isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) el.classList.add('open');
+  }
+
+  var bar    = document.getElementById('sticky-bar');
+  var anchor = document.getElementById('hero-cta-anchor');
+  var obs    = new IntersectionObserver(function(e) {
+    bar.classList.toggle('visible', !e[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(anchor);
+</script>
+
+</body>
+</html>

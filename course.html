@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boss Her Tech Stack™ — AI & Systems for Women Who Mean Business</title>
+<meta name="description" content="A live, hands-on course for women entrepreneurs who are done running their business out of their inbox and their brain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #FAF7F4;
+    --surface:  #F3EDE7;
+    --surface2: #EDE4DC;
+    --text:     #2C1F1A;
+    --muted:    #8C7B72;
+    --plum:     #7B3B6E;
+    --plum-lt:  #9E5491;
+    --plum-bg:  rgba(123,59,110,0.07);
+    --plum-bdr: rgba(123,59,110,0.18);
+    --blush:    #C47A8A;
+    --blush-lt: #E8A8B8;
+    --blush-bg: rgba(196,122,138,0.08);
+    --gold:     #B8845A;
+    --gold-lt:  #D4A07A;
+    --gold-bg:  rgba(184,132,90,0.1);
+    --gold-bdr: rgba(184,132,90,0.25);
+    --border:   rgba(44,31,26,0.09);
+    --border2:  rgba(44,31,26,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.15;
+    font-weight: 600;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    padding: 1.25rem 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: .01em;
+    color: var(--plum);
+  }
+
+  .nav-pill {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    background: var(--plum-bg);
+    color: var(--plum);
+    border: 1px solid var(--plum-bdr);
+    border-radius: 100px;
+    padding: 5px 13px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 3rem 1.5rem 2.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--blush);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 9vw, 3.75rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: -.01em;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: block;
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 28px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background .15s, transform .1s;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .btn-primary:hover  { background: var(--plum-lt); }
+  .btn-primary:active { transform: scale(.98); }
+
+  .btn-ghost {
+    display: block;
+    background: transparent;
+    color: var(--muted);
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    transition: color .15s;
+    width: 100%;
+  }
+
+  .btn-ghost:hover { color: var(--text); }
+
+  .btn-outline {
+    display: block;
+    background: transparent;
+    border: 1.5px solid var(--plum-bdr);
+    color: var(--plum);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    text-align: center;
+    transition: background .15s, border-color .15s;
+    width: 100%;
+  }
+
+  .btn-outline:hover { background: var(--plum-bg); border-color: var(--plum); }
+
+  .hero-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 3rem 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .875rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--blush);
+  }
+
+  .section h2 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: 1.75rem;
+    letter-spacing: -.01em;
+    color: var(--text);
+  }
+
+  .section h2 em {
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  /* ── PAIN ITEMS ── */
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  .pain-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .875rem;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .pain-item .icon {
+    font-size: 17px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── MODULES ── */
+  .modules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .module-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: .75rem;
+    align-items: start;
+    transition: border-color .15s;
+  }
+
+  .module-item:hover { border-color: var(--border2); }
+
+  .module-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--plum);
+    background: var(--plum-bg);
+    border: 1px solid var(--plum-bdr);
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .module-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--text);
+  }
+
+  .module-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── GEM BOX ── */
+  .gem-box {
+    background: linear-gradient(135deg, var(--plum-bg), var(--blush-bg));
+    border: 1px solid var(--plum-bdr);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .gem-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: .625rem;
+  }
+
+  .gem-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    color: var(--text);
+  }
+
+  .gem-box p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── FOR YOU ── */
+  .for-you-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .for-you-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    font-size: 15px;
+    color: var(--text);
+    padding: .875rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .for-you-item:last-child { border-bottom: none; }
+
+  .check {
+    color: var(--plum);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── BONUS BOX ── */
+  .bonus-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .bonus-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--gold-bg);
+    color: var(--gold);
+    border: 1px solid var(--gold-bdr);
+    border-radius: 100px;
+    padding: 4px 12px;
+    margin-bottom: 1rem;
+  }
+
+  .bonus-box h3 {
+    font-size: 1.15rem;
+    margin-bottom: .5rem;
+    color: var(--text);
+  }
+
+  .bonus-box p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .video-placeholder {
+    background: var(--surface);
+    border: 1.5px dashed var(--border2);
+    border-radius: 10px;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+
+  .video-placeholder:hover {
+    border-color: var(--plum-bdr);
+    background: var(--plum-bg);
+  }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+    background: var(--plum);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s;
+  }
+
+  .video-placeholder:hover .play-btn { background: var(--plum-lt); }
+  .play-btn svg { margin-left: 3px; }
+  .video-label { font-size: 13px; color: var(--muted); }
+
+  /* ── DIGITAL CARD CTA ── */
+  .card-cta-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .card-cta-box .big-icon { font-size: 2.25rem; margin-bottom: .875rem; }
+
+  .card-cta-box h3 {
+    font-size: 1.15rem;
+    margin-bottom: .5rem;
+    color: var(--text);
+  }
+
+  .card-cta-box p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── PRICING ── */
+  .pricing-card {
+    background: #fff;
+    border: 1.5px solid var(--plum-bdr);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--plum), var(--blush), var(--gold));
+  }
+
+  .pricing-event {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .price-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: .25rem;
+  }
+
+  .price-main sup {
+    font-size: 2rem;
+    vertical-align: super;
+    font-weight: 400;
+  }
+
+  .price-note { font-size: 13px; color: var(--muted); margin-bottom: 1.75rem; }
+
+  .price-ladder {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ladder-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    padding: .625rem .875rem;
+    border-radius: 8px;
+  }
+
+  .ladder-row.active {
+    background: var(--plum-bg);
+    color: var(--plum);
+    font-weight: 600;
+    border: 1px solid var(--plum-bdr);
+  }
+
+  .pricing-bonus {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .875rem 1rem;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .pricing-bonus strong {
+    display: block;
+    color: var(--blush);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    margin-bottom: .25rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .creds {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .cred {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+  }
+
+  .cred::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--blush);
+    flex-shrink: 0;
+  }
+
+  /* ── STICKY BAR ── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: .875rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    box-shadow: 0 -4px 24px rgba(44,31,26,0.07);
+  }
+
+  .sticky-bar.visible { transform: translateY(0); }
+
+  .sticky-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--plum);
+  }
+
+  .sticky-label { font-size: 11px; color: var(--muted); }
+
+  .sticky-btn {
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .15s;
+  }
+
+  .sticky-btn:hover { background: var(--plum-lt); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--plum);
+    margin-bottom: .375rem;
+  }
+
+  .footer-text { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+  .footer-link {
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── ANIMS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1        { animation: fadeUp .5s ease both; }
+  .hero-sub       { animation: fadeUp .5s .1s ease both; }
+  .hero-cta-row   { animation: fadeUp .5s .18s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Boss Her Tech Stack™</div>
+  <div class="nav-pill">Women's Success Summit 2026</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Presented by Upperbound.io</div>
+  <h1>Your business<br>is working.<br>Your backend <em>isn't.</em></h1>
+  <p class="hero-sub">Boss Her Tech Stack™ is a live, hands-on course that takes women entrepreneurs from tech chaos to a fully running, AI-powered business — without needing to know a single line of code.</p>
+  <div class="hero-cta-row">
+    <a href="YOUR_GHL_CHECKOUT_LINK" class="btn-primary" id="hero-cta">Grab My Summit Spot — $247</a>
+    <a href="#inside" class="btn-ghost">See what's inside ↓</a>
+  </div>
+  <p class="hero-note" style="margin-top:.5rem">Summit price: $247 &nbsp;·&nbsp; Goes to $397 after today</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Sound familiar?</div>
+  <h2>You built something <em>real.</em><br>But it still runs on you.</h2>
+  <div class="pain-list">
+    <div class="pain-item"><span class="icon">📱</span><span>Running your business from a personal Gmail, a group text, and three apps that don't talk to each other</span></div>
+    <div class="pain-item"><span class="icon">🤖</span><span>You know AI is important but every time you try to use it you spend 20 minutes getting nowhere</span></div>
+    <div class="pain-item"><span class="icon">📂</span><span>Your desktop is a disaster, inbox is 4,000 unread, and "I'll organize it later" has been the plan for two years</span></div>
+    <div class="pain-item"><span class="icon">💸</span><span>Past clients sitting in a spreadsheet who haven't heard from you — and that's revenue you already earned</span></div>
+    <div class="pain-item"><span class="icon">🔐</span><span>Same password for everything and you know that's a problem but you don't know where to start</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="inside">
+  <div class="section-label">What's inside</div>
+  <h2>9 live modules.<br>One complete <em>system.</em></h2>
+  <div class="modules-grid">
+    <div class="module-item"><div class="module-num">01</div><div><div class="module-title">Tech Basics That Run Your Life</div><div class="module-desc">Shortcuts, file systems, desktop, email folders — set up once, use forever.</div></div></div>
+    <div class="module-item"><div class="module-num">02</div><div><div class="module-title">Your Digital Identity</div><div class="module-desc">Domain, Google Workspace, professional email — set up like an actual business.</div></div></div>
+    <div class="module-item"><div class="module-num">03</div><div><div class="module-title">Business Structure & Grant Prep</div><div class="module-desc">LLC, EIN, SAM.gov — the foundation that unlocks grants most women never apply for.</div></div></div>
+    <div class="module-item"><div class="module-num">04</div><div><div class="module-title">Security & Scam Protection</div><div class="module-desc">Passwords, 2FA, AI deepfakes, voice cloning — what to know and what to do.</div></div></div>
+    <div class="module-item"><div class="module-num">05</div><div><div class="module-title">Your AI Trio: Claude, Gemini & ChatGPT</div><div class="module-desc">Which to use, when, and how to prompt them so you actually get results in your voice.</div></div></div>
+    <div class="module-item"><div class="module-num">06</div><div><div class="module-title">Notion: Your Business Brain</div><div class="module-desc">Build your command center live — clients, projects, content, SOPs, all in one place.</div></div></div>
+    <div class="module-item"><div class="module-num">07</div><div><div class="module-title">Research Like a Pro</div><div class="module-desc">AnswerThePublic + AI = 30 days of content in 20 minutes. No more blank screens.</div></div></div>
+    <div class="module-item"><div class="module-num">08</div><div><div class="module-title">GoHighLevel: Your Client Command Center</div><div class="module-desc">Set up your pipeline, migrate your contacts, and get your first automations live.</div></div></div>
+    <div class="module-item"><div class="module-num">09</div><div><div class="module-title">Your First Reactivation Campaign</div><div class="module-desc">Write the message, build the sequence, hit launch — your sleeping list is a goldmine.</div></div></div>
+  </div>
+  <div class="gem-box">
+    <div class="gem-label">✦ Introducing The Gem</div>
+    <h3>Your AI co-pilot. Built into every module.</h3>
+    <p>Every session comes with The Gem — a custom AI assistant powered by Claude that walks you through exactly what to do when you get stuck. No Googling. No giving up. No waiting until next week. Describe where you are and it tells you what to do next.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Is this you?</div>
+  <h2>This was built <em>for you</em> if —</h2>
+  <div class="for-you-list">
+    <div class="for-you-item"><span class="check">✦</span><span>You have real clients and real revenue but zero back-end infrastructure</span></div>
+    <div class="for-you-item"><span class="check">✦</span><span>You've tried AI and given up because you had no idea where to actually start</span></div>
+    <div class="for-you-item"><span class="check">✦</span><span>You've bought courses before and never finished them — this one is built differently</span></div>
+    <div class="for-you-item"><span class="check">✦</span><span>You're neurodivergent, easily overwhelmed, or need someone to just show you step by step</span></div>
+    <div class="for-you-item"><span class="check">✦</span><span>You're ready to stop being the bottleneck in your own business</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Summit bonus</div>
+  <h2>Try something <em>right now.</em></h2>
+  <div class="bonus-box">
+    <div class="bonus-tag">Free preview — watch this first</div>
+    <h3>The 90-Second Shortcut That Changes Everything</h3>
+    <p>Before you decide anything — watch this quick video. Set up one shortcut on your phone while you watch. If you like how that felt, you're going to love this course.</p>
+    <div class="video-placeholder" onclick="alert('Find Juliet in the room for a live demo!')">
+      <div class="play-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 2.5L13 8L4 13.5V2.5Z" fill="white"/>
+        </svg>
+      </div>
+      <div class="video-label">Watch the 90-second demo</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Free gift — summit exclusive</div>
+  <h2>Walk out with your own<br><em>digital business card.</em></h2>
+  <p style="font-size:15px;color:var(--muted);margin-bottom:1.5rem;line-height:1.75;font-weight:300">Fill out one quick form and we'll text you a shareable card with your name, business, and links — ready to share with every woman in this room today. No app. No sign-up. Tap and go.</p>
+  <div class="card-cta-box">
+    <div class="big-icon">💳</div>
+    <h3>Get Your Free Digital Card</h3>
+    <p>60 seconds. We text you a link. You share it with anyone. This is also one of the first things we teach inside the course.</p>
+    <a href="YOUR_GHL_FORM_LINK" class="btn-outline">Build My Card — It's Free →</a>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:.875rem;line-height:1.6">By submitting this form you agree to receive your digital card and occasional resources from Upperbound LLC, a sponsor at the Women's Success Summit 2026. We don't sell your information. Opt out anytime.</p>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Investment</div>
+  <h2>You found this at <em>exactly</em><br>the right time.</h2>
+  <div class="pricing-card">
+    <div class="pricing-event">Women's Success Summit 2026 — Today Only</div>
+    <div class="price-main"><sup>$</sup>247</div>
+    <div class="price-note">One-time · Lifetime access to materials</div>
+    <div class="price-ladder">
+      <div class="ladder-row active"><span>Today at the summit</span><span>$247</span></div>
+      <div class="ladder-row"><span>After today</span><span>$397</span></div>
+      <div class="ladder-row"><span>Full enrollment</span><span>$497</span></div>
+    </div>
+    <div class="pricing-bonus">
+      <strong>✦ Summit Bonus — Today Only</strong>
+      A private 1:1 onboarding call with Juliet. We map your first 30 days so nothing falls through the cracks.
+    </div>
+    <a href="YOUR_GHL_CHECKOUT_LINK" class="btn-primary">Grab My Spot — $247</a>
+    <div style="font-size:12px;color:var(--muted);margin:.875rem 0;padding:.625rem .875rem;background:var(--surface);border-radius:8px;line-height:1.55">💳 <strong>Payment plans available via Klarna</strong> — split into 4 interest-free payments at checkout</div>
+    <p style="font-size:12px;color:var(--muted)">This cohort is small on purpose. When it fills, enrollment closes.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-label">Your instructor</div>
+  <h2>Hi, I'm <em>Juliet.</em></h2>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:1.75rem;margin-bottom:1.75rem">
+    <img
+      src="juliet.jpg"
+      alt="Juliet Robinson — Co-Founder of Upperbound.io"
+      style="width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid var(--plum-bdr);box-shadow:0 4px 24px rgba(123,59,110,0.12);flex-shrink:0"
+    >
+    <div style="text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:.2rem">Juliet Robinson</div>
+      <div style="font-size:13px;color:var(--plum);font-weight:500">Co-Founder & COO, Upperbound.io</div>
+    </div>
+  </div>
+
+  <p class="about-text">I'm the Co-Founder and COO of Upperbound.io — an AI automation agency in Southwest Florida. My husband Derrick and I help local small businesses of all kinds implement tech and AI so they can grow fast without burning money on ads or burning out trying to keep up.</p>
+  <p class="about-text">I'm also a Member Onboarding Coordinator on the Leadership Team of the eWN SWFL Chapter — so you'll be seeing a lot of me in this community. That's not an accident. This course was built for exactly the women in this room.</p>
+  <div class="creds">
+    <div class="cred">Co-Founder & COO, Upperbound.io</div>
+    <div class="cred">eWN SWFL Chapter — Member Onboarding Coordinator, Leadership Team</div>
+    <div class="cred">GoHighLevel automation specialist</div>
+    <div class="cred">Southwest Florida — building it all from here</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" style="text-align:center;padding-bottom:5rem">
+  <h2 style="margin-bottom:1rem">Ready to build the <em>backend</em><br>your business deserves?</h2>
+  <p style="font-size:15px;color:var(--muted);margin-bottom:1.75rem;font-weight:300">Summit price disappears when the room clears today.</p>
+  <a href="YOUR_GHL_CHECKOUT_LINK" class="btn-primary" style="max-width:340px;margin:0 auto">Yes, I'm In — $247</a>
+</section>
+
+<footer>
+  <div class="footer-logo">Boss Her Tech Stack™</div>
+  <p class="footer-text">A course by Upperbound LLC &nbsp;·&nbsp; Juliet & Derrick Robinson &nbsp;·&nbsp; Southwest Florida</p>
+  <p class="footer-text" style="margin-top:.25rem">
+    <a href="mailto:hello@upperbound.io" class="footer-link">hello@upperbound.io</a>
+    &nbsp;·&nbsp;
+    <a href="https://upperbound.io" class="footer-link">upperbound.io</a>
+  </p>
+</footer>
+
+<div class="sticky-bar" id="sticky-bar">
+  <div>
+    <div class="sticky-price">$247</div>
+    <div class="sticky-label">Summit price — today only</div>
+  </div>
+  <a href="YOUR_GHL_CHECKOUT_LINK" class="sticky-btn">Grab My Spot</a>
+</div>
+
+<script>
+  const bar  = document.getElementById('sticky-bar');
+  const hero = document.getElementById('hero-cta');
+  const obs  = new IntersectionObserver(e => {
+    bar.classList.toggle('visible', !e[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(hero);
+</script>
+</body>
+</html>

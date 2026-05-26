@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Path — The ADHD Execs Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #FAF7F4;
+    --bg2:     #F2E4DD;
+    --surface: #F9EDE8;
+    --text:    #1A0610;
+    --muted:   #6B3A4E;
+    --plum:    #9B5B8A;
+    --plum-dk: #7B3B6E;
+    --blush:   #C47A8A;
+    --gold:    #B8845A;
+    --border:  rgba(26,6,16,0.09);
+    --border2: rgba(26,6,16,0.15);
+    --plum-bg: rgba(155,91,138,0.07);
+    --plum-bd: rgba(155,91,138,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1,h2,h3 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    padding: 1.25rem 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--plum-dk);
+  }
+
+  .nav-back {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color .15s;
+  }
+
+  .nav-back:hover { color: var(--plum); }
+
+  /* ── QUIZ WRAP ── */
+  .quiz-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--plum), var(--blush));
+    border-radius: 100px;
+    transition: width .4s ease;
+    width: 0%;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* ── QUESTION ── */
+  .question-wrap { display: none; }
+  .question-wrap.active { display: block; animation: fadeUp .35s ease both; }
+
+  .q-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .q-number::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--blush);
+  }
+
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+    line-height: 1.25;
+  }
+
+  .q-text em {
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  /* ── OPTIONS ── */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  .option {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.125rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s, transform .1s;
+    display: flex;
+    align-items: flex-start;
+    gap: .875rem;
+  }
+
+  .option:hover {
+    border-color: var(--plum-bd);
+    background: var(--plum-bg);
+  }
+
+  .option.selected {
+    border-color: var(--plum);
+    background: var(--plum-bg);
+  }
+
+  .option-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+
+  .option.selected .option-letter {
+    background: var(--plum);
+    color: #FAF7F4;
+    border-color: var(--plum);
+  }
+
+  .option-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+    padding-top: 3px;
+  }
+
+  /* ── NAV BUTTONS ── */
+  .nav-btns {
+    display: flex;
+    gap: .75rem;
+    margin-top: 2rem;
+  }
+
+  .btn-next {
+    flex: 1;
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background .15s, transform .1s, opacity .15s;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  .btn-next.ready {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .btn-next:hover { background: var(--plum-dk); }
+  .btn-next:active { transform: scale(.98); }
+
+  .btn-back {
+    background: transparent;
+    color: var(--muted);
+    font-size: 14px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+    display: none;
+  }
+
+  .btn-back.show { display: block; }
+  .btn-back:hover { color: var(--text); border-color: var(--plum-bd); }
+
+  /* ── RESULT ── */
+  .result-wrap {
+    display: none;
+    animation: fadeUp .4s ease both;
+  }
+
+  .result-wrap.show { display: block; }
+
+  .result-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .result-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .result-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .625rem;
+  }
+
+  .result-header h2 {
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: .875rem;
+  }
+
+  .result-header h2 em { font-style: italic; color: var(--plum); }
+
+  .result-header p {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .result-card {
+    background: #fff;
+    border: 1.5px solid var(--plum-bd);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--plum), var(--blush));
+  }
+
+  .result-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
+    color: var(--text);
+  }
+
+  .result-card h3 em { font-style: italic; color: var(--plum); }
+
+  .result-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .result-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+
+  .result-price span {
+    font-size: .875rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .btn-result-primary {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 8px;
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    transition: background .15s;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-result-primary:hover { background: var(--plum-dk); }
+
+  .btn-result-secondary {
+    display: block;
+    width: 100%;
+    padding: 13px 24px;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid var(--border2);
+    margin-top: .625rem;
+    transition: background .15s, color .15s;
+    text-decoration: none;
+  }
+
+  .btn-result-secondary:hover { background: var(--surface); color: var(--text); }
+
+  .retake-btn {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 1.25rem;
+    cursor: pointer;
+    transition: color .15s;
+    background: none;
+    border: none;
+    width: 100%;
+  }
+
+  .retake-btn:hover { color: var(--plum); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-text { font-size: 12px; color: var(--muted); }
+  .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">The ADHD Execs</div>
+  <a href="index.html" class="nav-back">← Back</a>
+</nav>
+
+<div class="quiz-wrap">
+
+  <!-- PROGRESS -->
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-label" id="progress-label">Question 1 of 5</div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="question-wrap active" id="q1">
+    <div class="q-number">Question 1</div>
+    <div class="q-text">How do you feel about <em>technology</em> in your business right now?</div>
+    <div class="options">
+      <div class="option" data-q="1" data-val="A" onclick="select(this)">
+        <div class="option-letter">A</div>
+        <div class="option-text">Pretty comfortable — I use my tools daily and mostly know what I'm doing</div>
+      </div>
+      <div class="option" data-q="1" data-val="B" onclick="select(this)">
+        <div class="option-letter">B</div>
+        <div class="option-text">It's hit or miss — some things I get, others completely lose me</div>
+      </div>
+      <div class="option" data-q="1" data-val="C" onclick="select(this)">
+        <div class="option-letter">C</div>
+        <div class="option-text">Honestly terrified — I avoid new tech as much as possible</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back" id="back-1">← Back</button>
+      <button class="btn-next" id="next-1" onclick="nextQ(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-wrap" id="q2">
+    <div class="q-number">Question 2</div>
+    <div class="q-text">Which sentence sounds <em>most like you</em> right now?</div>
+    <div class="options">
+      <div class="option" data-q="2" data-val="A" onclick="select(this)">
+        <div class="option-letter">A</div>
+        <div class="option-text">I'm using tools but I know I'm not using them to their full potential</div>
+      </div>
+      <div class="option" data-q="2" data-val="B" onclick="select(this)">
+        <div class="option-letter">B</div>
+        <div class="option-text">I have some tools but my systems are all over the place</div>
+      </div>
+      <div class="option" data-q="2" data-val="C" onclick="select(this)">
+        <div class="option-letter">C</div>
+        <div class="option-text">I don't really have systems — I'm running everything out of my head</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back show" onclick="prevQ(2)">← Back</button>
+      <button class="btn-next" id="next-2" onclick="nextQ(2)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-wrap" id="q3">
+    <div class="q-number">Question 3</div>
+    <div class="q-text">What would <em>help you most</em> right now?</div>
+    <div class="options">
+      <div class="option" data-q="3" data-val="A" onclick="select(this)">
+        <div class="option-letter">A</div>
+        <div class="option-text">Someone to audit my business and tell me exactly what to change</div>
+      </div>
+      <div class="option" data-q="3" data-val="B" onclick="select(this)">
+        <div class="option-letter">B</div>
+        <div class="option-text">Learning the right tools in a structured, guided, step-by-step way</div>
+      </div>
+      <div class="option" data-q="3" data-val="C" onclick="select(this)">
+        <div class="option-letter">C</div>
+        <div class="option-text">Just understanding the basics so I don't feel so far behind</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back show" onclick="prevQ(3)">← Back</button>
+      <button class="btn-next" id="next-3" onclick="nextQ(3)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-wrap" id="q4">
+    <div class="q-number">Question 4</div>
+    <div class="q-text">How do you feel about <em>AI</em> specifically?</div>
+    <div class="options">
+      <div class="option" data-q="4" data-val="A" onclick="select(this)">
+        <div class="option-letter">A</div>
+        <div class="option-text">I'm using it sometimes but I'm not sure I'm using the right tools for my business</div>
+      </div>
+      <div class="option" data-q="4" data-val="B" onclick="select(this)">
+        <div class="option-letter">B</div>
+        <div class="option-text">I've tried it but couldn't figure out how to make it actually useful for me</div>
+      </div>
+      <div class="option" data-q="4" data-val="C" onclick="select(this)">
+        <div class="option-letter">C</div>
+        <div class="option-text">I haven't really started — it feels overwhelming and I don't know where to begin</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back show" onclick="prevQ(4)">← Back</button>
+      <button class="btn-next" id="next-4" onclick="nextQ(4)">Next →</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-wrap" id="q5">
+    <div class="q-number">Question 5</div>
+    <div class="q-text">What's your <em>biggest frustration</em> in your business right now?</div>
+    <div class="options">
+      <div class="option" data-q="5" data-val="A" onclick="select(this)">
+        <div class="option-letter">A</div>
+        <div class="option-text">I'm doing things manually that should be automated — I just don't know what or how</div>
+      </div>
+      <div class="option" data-q="5" data-val="B" onclick="select(this)">
+        <div class="option-letter">B</div>
+        <div class="option-text">My tech is a mess and I don't know where to start cleaning it up</div>
+      </div>
+      <div class="option" data-q="5" data-val="C" onclick="select(this)">
+        <div class="option-letter">C</div>
+        <div class="option-text">I don't even know what I don't know — I need someone to just show me</div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-back show" onclick="prevQ(5)">← Back</button>
+      <button class="btn-next" id="next-5" onclick="showResult()">See My Result ✦</button>
+    </div>
+  </div>
+
+  <!-- RESULT: ASSESSMENT -->
+  <div class="result-wrap" id="result-assessment">
+    <div class="result-header">
+      <div class="result-icon">🔍</div>
+      <div class="result-label">Your result</div>
+      <h2>You're ready for an <em>AI Audit.</em></h2>
+      <p>You already have traction — you just need an expert eye on your business to show you where AI can save you time and make you more money. That's exactly what the AI Automation Assessment is for.</p>
+    </div>
+    <div class="result-card">
+      <h3>AI Automation <em>Assessment</em></h3>
+      <p>A 60-minute deep-dive with Juliet. She reviews your tools, workflows, and gaps — then hands you a personalized AI roadmap so you know exactly what to change, automate, and stop doing manually.</p>
+      <div class="result-price">$497 <span>· 60-min session with Juliet</span></div>
+      <a href="assessment.html" class="btn-result-primary">Learn More & Book Your Call →</a>
+      <a href="course.html" class="btn-result-secondary">See the course instead</a>
+    </div>
+    <button class="retake-btn" onclick="retake()">↺ Retake the quiz</button>
+  </div>
+
+  <!-- RESULT: COURSE -->
+  <div class="result-wrap" id="result-course">
+    <div class="result-header">
+      <div class="result-icon">📚</div>
+      <div class="result-label">Your result</div>
+      <h2>Boss Her <em>Tech Stack™</em> is your path.</h2>
+      <p>You're in exactly the right place to build the foundation. The live cohort is designed for women who are ready to learn, implement, and get their business running like it should — with a community around them the whole way.</p>
+    </div>
+    <div class="result-card">
+      <h3>Boss Her <em>Tech Stack™</em></h3>
+      <p>9 live implementation sessions, The Gem AI co-pilot, and the Boss Her Community — everything you need to go from tech chaos to a fully running, AI-powered business. No experience required.</p>
+      <div class="result-price">$247 <span>· founding member rate</span></div>
+      <a href="course.html" class="btn-result-primary">See What's Inside →</a>
+      <a href="assessment.html" class="btn-result-secondary">Tell me about the audit instead</a>
+    </div>
+    <button class="retake-btn" onclick="retake()">↺ Retake the quiz</button>
+  </div>
+
+</div>
+
+<footer>
+  <p class="footer-text">
+    <a href="index.html" class="footer-link">← Back to home</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:hello@upperbound.io" class="footer-link">hello@upperbound.io</a>
+  </p>
+</footer>
+
+<script>
+  var answers = {};
+  var current = 1;
+  var total   = 5;
+
+  function select(el) {
+    var q = el.dataset.q;
+    document.querySelectorAll('[data-q="'+q+'"]').forEach(function(o) {
+      o.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    answers[q] = el.dataset.val;
+    var btn = document.getElementById('next-'+q);
+    if (btn) btn.classList.add('ready');
+  }
+
+  function nextQ(q) {
+    if (!answers[q]) return;
+    document.getElementById('q'+q).classList.remove('active');
+    current = q + 1;
+    if (current <= total) {
+      document.getElementById('q'+current).classList.add('active');
+      updateProgress();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  }
+
+  function prevQ(q) {
+    document.getElementById('q'+q).classList.remove('active');
+    current = q - 1;
+    document.getElementById('q'+current).classList.add('active');
+    updateProgress();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function updateProgress() {
+    var pct = ((current - 1) / total * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent =
+      current <= total ? 'Question ' + current + ' of ' + total : 'Done!';
+  }
+
+  function showResult() {
+    if (!answers[5]) return;
+    // Score: A=2, B=1, C=0
+    var score = 0;
+    for (var q in answers) {
+      if (answers[q] === 'A') score += 2;
+      else if (answers[q] === 'B') score += 1;
+    }
+    // Max = 10, Assessment threshold >= 7 (mostly A's)
+    document.getElementById('q5').classList.remove('active');
+    document.getElementById('progress-fill').style.width = '100%';
+    document.getElementById('progress-label').textContent = 'Your result is ready!';
+
+    if (score >= 7) {
+      document.getElementById('result-assessment').classList.add('show');
+    } else {
+      document.getElementById('result-course').classList.add('show');
+    }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function retake() {
+    answers = {};
+    current = 1;
+    document.querySelectorAll('.result-wrap').forEach(function(r) { r.classList.remove('show'); });
+    document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+    document.querySelectorAll('.btn-next').forEach(function(b) { b.classList.remove('ready'); });
+    document.querySelectorAll('.question-wrap').forEach(function(q) { q.classList.remove('active'); });
+    document.getElementById('q1').classList.add('active');
+    document.getElementById('progress-fill').style.width = '0%';
+    document.getElementById('progress-label').textContent = 'Question 1 of 5';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  // Init progress
+  updateProgress();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ADHD Execs — Find Your Path with Juliet Robinson</title>
+<meta name="description" content="AI automation and business systems for women entrepreneurs. Find out which path is right for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #FAF7F4;
+    --bg2:     #F2E4DD;
+    --surface: #F9EDE8;
+    --text:    #1A0610;
+    --muted:   #6B3A4E;
+    --plum:    #9B5B8A;
+    --plum-dk: #7B3B6E;
+    --blush:   #C47A8A;
+    --gold:    #B8845A;
+    --border:  rgba(26,6,16,0.09);
+    --border2: rgba(26,6,16,0.15);
+    --plum-bg: rgba(155,91,138,0.07);
+    --plum-bd: rgba(155,91,138,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1,h2,h3 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    padding: 1.25rem 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--plum-dk);
+    letter-spacing: .01em;
+  }
+
+  .nav-sub {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--blush);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 3.75rem);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -.01em;
+    color: var(--text);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* ── JULIET INTRO ── */
+  .juliet-intro {
+    display: flex;
+    align-items: center;
+    gap: .875rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    max-width: 420px;
+    margin: 0 auto 3rem;
+    text-align: left;
+  }
+
+  .juliet-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--plum-bd);
+    flex-shrink: 0;
+  }
+
+  .juliet-intro-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .juliet-intro-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* ── PATH CARDS ── */
+  .paths {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 580px) {
+    .paths { grid-template-columns: 1fr 1fr; }
+  }
+
+  .path-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color .2s, transform .15s, box-shadow .2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .path-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .path-card.audit::before { background: linear-gradient(90deg, var(--plum), var(--blush)); }
+  .path-card.course::before { background: linear-gradient(90deg, var(--blush), var(--gold)); }
+
+  .path-card:hover {
+    border-color: var(--plum-bd);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(155,91,138,0.1);
+  }
+
+  .path-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .path-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .25rem;
+  }
+
+  .path-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -.01em;
+  }
+
+  .path-card h2 em {
+    font-style: italic;
+    color: var(--plum);
+  }
+
+  .path-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .path-vibes {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+  }
+
+  .path-vibe {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    line-height: 1.45;
+  }
+
+  .path-vibe::before {
+    content: '✦';
+    color: var(--plum);
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .path-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .path-price span {
+    font-size: .875rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .path-btn {
+    display: block;
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    text-decoration: none;
+  }
+
+  .path-btn:active { transform: scale(.98); }
+  .path-btn.primary { background: var(--plum); color: #FAF7F4; }
+  .path-btn.primary:hover { background: var(--plum-dk); }
+  .path-btn.secondary { background: var(--bg2); color: var(--text); border: 1px solid var(--border2); }
+  .path-btn.secondary:hover { background: var(--surface); }
+
+  /* ── NOT SURE STRIP ── */
+  .not-sure {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    text-align: center;
+  }
+
+  .not-sure-box {
+    background: var(--bg2);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .875rem;
+  }
+
+  .not-sure-box h3 {
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+
+  .not-sure-box p {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 380px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 28px;
+    border-radius: 100px;
+    transition: background .15s;
+  }
+
+  .quiz-btn:hover { background: var(--plum-dk); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.75rem 1.5rem;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--plum-dk);
+  }
+
+  .footer-text { font-size: 12px; color: var(--muted); }
+  .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ── ANIMS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1         { animation: fadeUp .5s ease both; }
+  .hero-sub        { animation: fadeUp .5s .1s ease both; }
+  .juliet-intro    { animation: fadeUp .5s .15s ease both; }
+  .path-card:nth-child(1) { animation: fadeUp .5s .2s ease both; }
+  .path-card:nth-child(2) { animation: fadeUp .5s .28s ease both; }
+  .not-sure-box    { animation: fadeUp .5s .35s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">The ADHD Execs</div>
+  <div class="nav-sub">by Upperbound.io</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Welcome, lovely</div>
+  <h1>You're in the<br>right place.<br>Let's find your <em>path.</em></h1>
+  <p class="hero-sub">Every woman who lands here is smart, driven, and ready for something to actually change. The question is just — what kind of help fits where you are right now?</p>
+
+  <div class="juliet-intro">
+    <img src="juliet.jpg" alt="Juliet Robinson" class="juliet-avatar">
+    <div>
+      <div class="juliet-intro-name">Hi, I'm Juliet.</div>
+      <div class="juliet-intro-text">Co-Founder of Upperbound.io · eWN SWFL Chapter Leadership · I help women use AI to grow their business without burning out.</div>
+    </div>
+  </div>
+</section>
+
+<div class="paths">
+
+  <div class="path-card audit" onclick="window.location.href='assessment.html'">
+    <div class="path-icon">🔍</div>
+    <div>
+      <div class="path-label">Done with you</div>
+      <h2>AI Automation <em>Assessment</em></h2>
+    </div>
+    <p class="path-desc">You already move comfortably in tech. You just want an expert to look at your business and tell you exactly where AI can save you time and make you more money.</p>
+    <div class="path-vibes">
+      <div class="path-vibe">I use my tools but know I'm not maximizing them</div>
+      <div class="path-vibe">I want someone to audit my setup and give me a roadmap</div>
+      <div class="path-vibe">I'm ready to invest in getting it right</div>
+    </div>
+    <div class="path-price">$497 <span>· 60-min deep dive</span></div>
+    <a href="assessment.html" class="path-btn primary">Learn More →</a>
+  </div>
+
+  <div class="path-card course" onclick="window.location.href='course.html'">
+    <div class="path-icon">📚</div>
+    <div>
+      <div class="path-label">Learn with me</div>
+      <h2>Boss Her <em>Tech Stack™</em></h2>
+    </div>
+    <p class="path-desc">Tech feels overwhelming and you're not sure where to start. You want structure, guidance, and a community of women who get it — learning and implementing together.</p>
+    <div class="path-vibes">
+      <div class="path-vibe">My systems are a mess and I don't know where to start</div>
+      <div class="path-vibe">I've tried AI but couldn't make it useful for my business</div>
+      <div class="path-vibe">I want to learn in a safe, guided, judgment-free space</div>
+    </div>
+    <div class="path-price">$247 <span>· founding member</span></div>
+    <a href="course.html" class="path-btn secondary">See the Course →</a>
+  </div>
+
+</div>
+
+<div class="not-sure">
+  <div class="not-sure-box">
+    <div style="font-size:1.5rem">🤔</div>
+    <h3>Not sure which one fits?</h3>
+    <p>Take our 2-minute quiz and we'll help you figure out exactly where to start — no pressure, no wrong answers.</p>
+    <a href="quiz.html" class="quiz-btn">Take the Quiz ✦</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">The ADHD Execs · Upperbound.io</div>
+  <p class="footer-text">
+    <a href="mailto:hello@upperbound.io" class="footer-link">hello@upperbound.io</a>
+    &nbsp;·&nbsp;
+    <a href="https://upperbound.io" class="footer-link">upperbound.io</a>
+  </p>
+</footer>
+
+</body>
+</html>
