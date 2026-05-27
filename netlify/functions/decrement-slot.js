@@ -1,5 +1,5 @@
 // Netlify Function: decrement-slot.js
-// Triggered by GHL webhook when someone purchases the Boss Her Tech Stack course
+// Triggered by GHL webhook when someone purchases the The Exec Tech Stack™ course
 // Decrements slots_remaining in Supabase by 1
 
 const SUPABASE_URL = 'https://dlsnpbzntajezchadfnc.supabase.co';
