@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your AI & Automation Audit — Upperbound.io</title>
+<meta name="description" content="Transform your business with a comprehensive 90-minute AI & Automation Audit. Find your hidden hours and the money you're leaving on the table.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #FAF7F4;
+    --bg2:     #F2E4DD;
+    --surface: #F9EDE8;
+    --text:    #1A0610;
+    --muted:   #6B3A4E;
+    --plum:    #9B5B8A;
+    --plum-dk: #7B3B6E;
+    --plum-bg: rgba(155,91,138,0.07);
+    --plum-bd: rgba(155,91,138,0.2);
+    --blush:   #C47A8A;
+    --gold:    #B8845A;
+    --border:  rgba(26,6,16,0.09);
+    --border2: rgba(26,6,16,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--plum-dk);
+    padding: .625rem 1.5rem;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bg2);
+    letter-spacing: .02em;
+  }
+
+  .topbar a {
+    color: #F2E4DD;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 1.25rem 1.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--plum-dk);
+    letter-spacing: .01em;
+  }
+
+  .nav-cta {
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 100px;
+    transition: background .15s;
+  }
+
+  .nav-cta:hover { background: var(--plum-dk); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--plum-dk) 0%, #5C2558 100%);
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60%; left: -20%;
+    width: 140%; height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--bg2);
+    margin-bottom: 1.25rem;
+    opacity: .85;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 700;
+    color: #FAF7F4;
+    margin-bottom: 1.25rem;
+    letter-spacing: -.01em;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--bg2);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(249,237,232,0.75);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: var(--bg2);
+    color: var(--plum-dk);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    transition: background .15s, transform .1s;
+    letter-spacing: .01em;
+  }
+
+  .hero-btn:hover { background: #FAF7F4; }
+  .hero-btn:active { transform: scale(.98); }
+
+  .hero-note {
+    font-size: 12px;
+    color: rgba(249,237,232,0.5);
+    margin-top: .875rem;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: .875rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--blush);
+  }
+
+  .section h2 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -.01em;
+  }
+
+  .section h2 em { font-style: italic; color: var(--plum); }
+
+  .divider { height: 1px; background: var(--border); max-width: 860px; margin: 0 auto; }
+
+  /* ── IS THIS YOU ── */
+  .is-this-you {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 640px) {
+    .is-this-you { grid-template-columns: 1fr 1fr; }
+  }
+
+  .juliet-photo-wrap {
+    position: relative;
+  }
+
+  .juliet-photo-wrap img {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 8px 40px rgba(123,59,110,0.2);
+    border: 3px solid var(--plum-bd);
+  }
+
+  .juliet-photo-caption {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-top: .75rem;
+  }
+
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .pain-item::before {
+    content: '✦';
+    color: var(--plum);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* ── 3 STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .steps-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .step-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  .step-card:hover {
+    border-color: var(--plum-bd);
+    box-shadow: 0 4px 24px rgba(155,91,138,0.08);
+  }
+
+  .step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--plum), var(--blush));
+  }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--plum-bd);
+    line-height: 1;
+    margin-bottom: .75rem;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .75rem;
+  }
+
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+  }
+
+  .step-list-item {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    line-height: 1.5;
+  }
+
+  .step-list-item::before {
+    content: '→';
+    color: var(--blush);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ── URGENCY ── */
+  .urgency-box {
+    background: linear-gradient(135deg, var(--plum-dk), #5C2558);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    color: #FAF7F4;
+    text-align: center;
+  }
+
+  .urgency-box h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: #FAF7F4;
+    margin-bottom: 1.5rem;
+  }
+
+  .urgency-box h2 em { font-style: italic; color: var(--bg2); }
+
+  .urgency-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .875rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  @media (min-width: 580px) {
+    .urgency-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .urgency-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .625rem;
+    font-size: 14px;
+    color: rgba(249,237,232,0.85);
+    line-height: 1.5;
+  }
+
+  .urgency-item::before {
+    content: '⚠';
+    font-size: 14px;
+    flex-shrink: 0;
+    opacity: .7;
+    margin-top: 1px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 580px) {
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .testimonial-stars {
+    color: #D4A853;
+    font-size: 14px;
+    margin-bottom: .625rem;
+  }
+
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: .625rem;
+  }
+
+  .testimonial-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--plum);
+  }
+
+  .testimonial-role {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── WHO ── */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+
+  @media (min-width: 580px) { .who-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .who-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    line-height: 1.45;
+  }
+
+  .who-item::before {
+    content: '✦';
+    color: var(--plum);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── WHAT'S IN THE REPORT ── */
+  .report-grid {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  .report-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: .75rem;
+    align-items: start;
+    transition: border-color .15s;
+  }
+
+  .report-item:hover { border-color: var(--plum-bd); }
+
+  .report-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--plum-bg);
+    border: 1px solid var(--plum-bd);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .report-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .report-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── MEET JULIET ── */
+  .meet-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 640px) { .meet-grid { grid-template-columns: 240px 1fr; } }
+
+  .meet-photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--plum-bd);
+    box-shadow: 0 4px 24px rgba(155,91,138,0.12);
+    display: block;
+    margin: 0 auto;
+  }
+
+  .meet-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .25rem;
+  }
+
+  .meet-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 1rem;
+    letter-spacing: .02em;
+  }
+
+  .meet-bio {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .meet-creds {
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+  }
+
+  .meet-cred {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    font-weight: 500;
+  }
+
+  .meet-cred::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--blush);
+    flex-shrink: 0;
+  }
+
+  /* ── PRICING ── */
+  .pricing-card {
+    background: #fff;
+    border: 2px solid var(--plum-bd);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(155,91,138,0.1);
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--plum-dk), var(--blush), var(--gold));
+  }
+
+  .pricing-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--plum);
+    margin-bottom: 1rem;
+  }
+
+  .pricing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .5rem;
+  }
+
+  .pricing-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: .25rem;
+  }
+
+  .pricing-amount sup {
+    font-size: 2rem;
+    vertical-align: super;
+    font-weight: 400;
+  }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+    line-height: 1.55;
+  }
+
+  .includes-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+  }
+
+  .includes-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .625rem;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.45;
+  }
+
+  .includes-check {
+    width: 18px;
+    height: 18px;
+    background: var(--plum);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 10px;
+    color: #FAF7F4;
+  }
+
+  .book-btn {
+    display: block;
+    width: 100%;
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 17px 28px;
+    border-radius: 100px;
+    text-align: center;
+    transition: background .15s, transform .1s;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .01em;
+    text-decoration: none;
+    margin-bottom: .75rem;
+  }
+
+  .book-btn:hover { background: var(--plum-dk); }
+  .book-btn:active { transform: scale(.98); }
+
+  .klarna-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .credit-box {
+    background: var(--plum-bg);
+    border: 1px solid var(--plum-bd);
+    border-radius: 10px;
+    padding: .875rem 1rem;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .credit-box strong { color: var(--plum); font-weight: 600; }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    cursor: pointer;
+  }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .faq-arrow { color: var(--muted); font-size: 16px; flex-shrink: 0; transition: transform .2s; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { display: none; font-size: 14px; color: var(--muted); line-height: 1.7; padding-top: .625rem; font-weight: 300; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--plum-dk), #5C2558);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 0 1.5rem;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-banner h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    color: #FAF7F4;
+    margin-bottom: .875rem;
+  }
+
+  .cta-banner p {
+    font-size: 16px;
+    color: rgba(249,237,232,0.7);
+    margin-bottom: 1.75rem;
+    font-weight: 300;
+  }
+
+  .cta-banner .hero-btn { font-size: 16px; padding: 17px 40px; }
+
+  /* ── STICKY BAR ── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: .875rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    box-shadow: 0 -4px 24px rgba(26,6,16,0.07);
+  }
+
+  .sticky-bar.visible { transform: translateY(0); }
+  .sticky-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--plum); }
+  .sticky-label { font-size: 11px; color: var(--muted); }
+
+  .sticky-btn {
+    background: var(--plum);
+    color: #FAF7F4;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .15s;
+    text-decoration: none;
+  }
+
+  .sticky-btn:hover { background: var(--plum-dk); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding-bottom: 5rem;
+  }
+
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: var(--plum-dk); }
+  .footer-text { font-size: 12px; color: var(--muted); }
+  .footer-link { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ── ANIMS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1   { animation: fadeUp .5s ease both; }
+  .hero-sub  { animation: fadeUp .5s .1s ease both; }
+  .hero-btn  { animation: fadeUp .5s .18s ease both; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  ⏰ Founding member rate closes Sunday May 31 at midnight ET &nbsp;·&nbsp; <a href="#pricing">Book Now — $497</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Upperbound.io</div>
+  <a href="#pricing" class="nav-cta">Book Your Audit Now →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">✦ Attention: Business Owners</div>
+  <h1>Transform Your Business With a Comprehensive<br><em>AI & Automation Audit</em></h1>
+  <p class="hero-sub">Designed to uncover hidden hours, hidden revenue, and hidden opportunities for efficiency, growth, and innovation through AI and automation.</p>
+  <a href="https://link.fastpaydirect.com/payment-link/6a1786f7c3ea3a19f0bd8d25" class="hero-btn" id="hero-anchor">Book Your Audit Now — $497 →</a>
+  <p class="hero-note">90-minute deep dive · Written roadmap delivered within 24hrs · $497 credits toward $997 setup</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- IS THIS YOU -->
+<section class="section">
+  <div class="section-eyebrow">Is this you?</div>
+  <h2>Sound <em>familiar?</em></h2>
+  <div class="is-this-you">
+    <div class="juliet-photo-wrap">
+      <img src="juliet-full.jpg" alt="Juliet Robinson — Co-Founder, Upperbound.io" style="border-radius:16px;width:100%;max-width:340px;object-fit:cover;object-position:center top;aspect-ratio:3/4;display:block;margin:0 auto;box-shadow:0 8px 40px rgba(123,59,110,0.2);border:3px solid var(--plum-bd)">
+      <div class="juliet-photo-caption">Juliet Robinson · Co-Founder, Upperbound.io</div>
+    </div>
+    <div class="pain-list">
+      <div class="pain-item">You're a business owner spending countless hours on repetitive tasks that could be automated</div>
+      <div class="pain-item">Your team is bogged down by manual processes and nothing talks to anything else</div>
+      <div class="pain-item">You know AI could transform your business but you're unsure where to start</div>
+      <div class="pain-item">You want to stay ahead of competitors who are already leveraging AI</div>
+      <div class="pain-item">You're tired of watching opportunities slip through the cracks due to inefficient systems</div>
+      <div class="pain-item">You're doing follow-up manually — or worse, not doing it at all</div>
+      <div class="pain-item">You suspect there are hidden hours and revenue in your business — you just can't see where yet</div>
+      <p style="font-size:15px;font-weight:600;color:var(--plum);margin-top:1rem">Don't worry — we can help.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 3 STEPS -->
+<section class="section">
+  <div class="section-eyebrow">The process</div>
+  <h2>Super Simple <em>3-Step Process</em></h2>
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Business Systems Analysis</div>
+      <div class="step-list">
+        <div class="step-list-item">Complete analysis of your current business systems</div>
+        <div class="step-list-item">Review of sales & marketing processes</div>
+        <div class="step-list-item">Assessment of client onboarding and follow-up</div>
+        <div class="step-list-item">Evaluation of internal workflows</div>
+        <div class="step-list-item">Identification of automation opportunities</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Custom Implementation Report</div>
+      <div class="step-list">
+        <div class="step-list-item">Detailed report outlining specific AI solutions for your business</div>
+        <div class="step-list-item">Step-by-step automation recommendations</div>
+        <div class="step-list-item">Priority implementation schedule</div>
+        <div class="step-list-item">ROI projections for each solution</div>
+        <div class="step-list-item">Visual map of proposed systems</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">90-Min Strategy Review with Juliet</div>
+      <div class="step-list">
+        <div class="step-list-item">Walk-through of your customized roadmap</div>
+        <div class="step-list-item">Clear action steps for implementation</div>
+        <div class="step-list-item">Questions answered, concerns addressed</div>
+        <div class="step-list-item">Strategic guidance to move you forward</div>
+        <div class="step-list-item">Written summary delivered within 24 hours</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- URGENCY -->
+<section class="section">
+  <div class="urgency-box">
+    <h2><em>The AI revolution isn't coming —</em><br>it's already here.</h2>
+    <div class="urgency-grid">
+      <div class="urgency-item">20+ hours of team productivity lost every week to manual tasks</div>
+      <div class="urgency-item">Thousands in potential revenue left uncaptured every month</div>
+      <div class="urgency-item">Competitive advantage handed to faster-moving rivals every day you wait</div>
+      <div class="urgency-item">Growth opportunities missed due to operational bottlenecks you can't see</div>
+    </div>
+    <a href="https://link.fastpaydirect.com/payment-link/6a1786f7c3ea3a19f0bd8d25" class="hero-btn">Book Your Audit Now — $497 →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-eyebrow">What others are saying</div>
+  <h2>Real results from <em>real business owners.</em></h2>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-quote">"This is EVERYTHING I have wanted in my business FINALLY coming to life."</div>
+      <div class="testimonial-name">Sarah M.</div>
+      <div class="testimonial-role">Service Business Owner, SWFL</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-quote">"In just weeks I had a clear plan. I would recommend this to anyone who wants to take the guesswork out of growing their business."</div>
+      <div class="testimonial-name">Lisa T.</div>
+      <div class="testimonial-role">Entrepreneur, Southwest Florida</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-quote">"I finally understand what I should be automating and in what order. The roadmap alone was worth every penny."</div>
+      <div class="testimonial-name">Michelle R.</div>
+      <div class="testimonial-role">Med Spa Owner, Fort Myers</div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <div class="testimonial-quote">"A lot of actionable advice and super inspiring. It's been an amazing experience top to bottom."</div>
+      <div class="testimonial-name">Jennifer K.</div>
+      <div class="testimonial-role">Real Estate Professional, SWFL</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHO IS IT FOR -->
+<section class="section">
+  <div class="section-eyebrow">Perfect fit</div>
+  <h2>Who is this <em>perfect for?</em></h2>
+  <div class="who-grid">
+    <div class="who-item">Local small businesses ready to stop running on duct tape and prayer</div>
+    <div class="who-item">Service-based companies looking to scale without adding headcount</div>
+    <div class="who-item">Entrepreneurs with established processes ready for optimization</div>
+    <div class="who-item">Forward-thinking leaders who want to leverage AI for real growth</div>
+    <div class="who-item">Business owners who know they're leaving time and money on the table</div>
+    <div class="who-item">Anyone tired of doing manually what a system should be doing for them</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT'S IN THE REPORT -->
+<section class="section">
+  <div class="section-eyebrow">The deliverable</div>
+  <h2>What's in <em>your report?</em></h2>
+  <div class="report-grid">
+    <div class="report-item">
+      <div class="report-icon">📋</div>
+      <div>
+        <div class="report-title">Executive Summary</div>
+        <div class="report-desc">Overview of your business, key findings, proposed areas of improvement, and expected impact of AI and automation solutions.</div>
+      </div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">🔍</div>
+      <div>
+        <div class="report-title">Current Business Analysis</div>
+        <div class="report-desc">Operations, marketing strategies, sales processes, team productivity, and existing systems — all documented and assessed.</div>
+      </div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">🤖</div>
+      <div>
+        <div class="report-title">AI & Automation Opportunities</div>
+        <div class="report-desc">Specific opportunities across operations, marketing, sales, team collaboration, and system integration — tailored to your business.</div>
+      </div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">🛠️</div>
+      <div>
+        <div class="report-title">Proposed Tools & Solutions</div>
+        <div class="report-desc">Recommended tools with cost, functionality, and ease-of-use comparison. No generic lists — only what actually fits your business.</div>
+      </div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">📈</div>
+      <div>
+        <div class="report-title">AI Opportunity Matrix</div>
+        <div class="report-desc">4-quadrant visual map: Quick Wins, Big Swings, Nice-to-Haves, and Future Projects — so you know exactly what to do first.</div>
+      </div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">🗺️</div>
+      <div>
+        <div class="report-title">Implementation Roadmap</div>
+        <div class="report-desc">Phased approach: short-term quick wins, mid-term integrations, long-term automation strategies — with timeline and milestones.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-eyebrow">Investment</div>
+  <h2>Ready to find your <em>hidden hours?</em></h2>
+  <div class="pricing-card">
+    <div class="pricing-eyebrow">✦ AI & Automation Assessment — Women's Success Summit Rate</div>
+    <div class="pricing-title">90-Minute Deep Dive with Juliet</div>
+    <div class="pricing-amount"><sup>$</sup>497</div>
+    <p class="pricing-note">One payment · Written roadmap within 24hrs · Book your call immediately</p>
+    <div class="credit-box">
+      <strong>✦ Your audit fee is fully redeemable.</strong> If you choose to move forward with done-for-you system setup, your $497 rolls directly into the $997 setup investment — you only owe $500 more. The audit pays for itself.
+    </div>
+    <div class="includes-list">
+      <div class="includes-item"><div class="includes-check">✓</div><span>90-minute deep dive strategy session</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Complete analysis of your current systems</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Review of sales & marketing processes</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Custom AI implementation roadmap</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Step-by-step automation recommendations</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>AI Opportunity Matrix — 4 quadrants</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Written summary delivered within 24 hours</span></div>
+      <div class="includes-item"><div class="includes-check">✓</div><span>Strategic guidance to move you forward</span></div>
+    </div>
+    <a href="https://link.fastpaydirect.com/payment-link/6a1786f7c3ea3a19f0bd8d25" class="book-btn">Book Your Audit Now — $497 →</a>
+    <p class="klarna-note">💳 Need a payment plan? <strong>Klarna available at checkout</strong> — split into 4 interest-free payments. &nbsp;·&nbsp; 🔒 100% Secure & Safe Payment</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:.75rem;line-height:1.6">⚠️ The $497 covers the strategy session and roadmap only. It does not include monthly platform fees for tools we recommend ($197–$797/month, billed directly by providers). We discuss this transparently on your call.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MEET JULIET -->
+<section class="section">
+  <div class="section-eyebrow">Meet your guide</div>
+  <h2>Hey, <em>I'm Juliet!</em></h2>
+  <div class="meet-grid">
+    <div class="meet-photo">
+      <img src="juliet.jpg" alt="Juliet Robinson">
+      <div style="text-align:center;margin-top:.75rem;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--plum)">Juliet Robinson</div>
+    </div>
+    <div>
+      <div class="meet-name">Juliet Robinson</div>
+      <div class="meet-title">Co-Founder & COO, Upperbound.io · eWN SWFL Chapter Leadership Team</div>
+      <p class="meet-bio">I've spent years watching local small businesses struggle to implement the tech they need to grow — not because they aren't smart, capable, or driven, but because nobody showed them what was actually possible. That gap is exactly why I built Upperbound.</p>
+      <p class="meet-bio">I specialize in finding the hidden hours and revenue that business owners don't even know they're losing — and building the automated systems that get them back. Every audit I do is honest, specific, and built around what your business actually needs. No generic advice. No fluff.</p>
+      <div class="meet-creds">
+        <div class="meet-cred">Co-Founder & COO, Upperbound.io — AI automation agency, SWFL</div>
+        <div class="meet-cred">GoHighLevel automation specialist</div>
+        <div class="meet-cred">eWN SWFL Chapter — Member Onboarding Coordinator, Leadership Team</div>
+        <div class="meet-cred">Southwest Florida — building it all from here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-eyebrow">Still not sure?</div>
+  <h2>Frequently Asked <em>Questions</em></h2>
+  <div class="faq-list">
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">How long will the report take to come through? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Your written summary is delivered within 24 hours of your call. For more complex businesses it may take slightly longer, but you'll never be left waiting more than 48 hours.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Do I have to use Upperbound to implement the recommendations? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Not at all. You're welcome to take the roadmap back to your own team or another provider. However, if you choose to move forward with Upperbound, your full $497 audit fee is credited toward the $997 setup investment — so you only owe $500 more.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What does the $997 setup include? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Your complete AI business system — built and installed by the Upperbound team. Exactly what's included depends on your audit results. It could be GHL pipeline setup, an AI employee, a DBR campaign, automations, or any combination your business needs. You don't pay for things you don't need. Note: the $997 is a one-time setup fee. Monthly platform fees ($197–$797/month) are billed directly by service providers and are separate.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Do you offer payment plans? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Yes — Klarna is available at checkout. You can split the $497 into 4 interest-free payments. The full $497 still credits toward the $997 setup package if you choose to move forward.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What aspects of my business will the report cover? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Operations (workflows, bottlenecks, manual tasks), marketing (campaigns, content, customer targeting), sales (lead generation, nurturing, conversion), team productivity (roles, task distribution, time use), and system integration (existing tools and how they connect). You also get an AI Opportunity Matrix with Quick Wins, Big Swings, Nice-to-Haves, and Future Projects.</div>
+    </div>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">What's the refund policy? <span class="faq-arrow">↓</span></div>
+      <div class="faq-a">Due to the time and expertise involved in generating your personalized report, we're unable to offer refunds. However, we're happy to clarify any aspect of the report that you feel wasn't fully covered in the debrief call.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div style="padding:0 1.5rem 3.5rem;max-width:860px;margin:0 auto">
+  <div class="cta-banner">
+    <h2>Ready to Implement <em>AI & Automation?</em></h2>
+    <p>The time to act is now. Your competitors are already exploring AI solutions. Don't get left behind in the biggest technological transformation since the internet.</p>
+    <a href="https://link.fastpaydirect.com/payment-link/6a1786f7c3ea3a19f0bd8d25" class="hero-btn">Book Your Audit Now — $497 →</a>
+    <p style="font-size:12px;color:rgba(249,237,232,0.45);margin-top:.875rem">Limited spots available to ensure premium service delivery</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Upperbound.io</div>
+  <p class="footer-text">
+    <a href="mailto:hello@upperbound.io" class="footer-link">hello@upperbound.io</a>
+    &nbsp;·&nbsp;
+    <a href="https://upperbound.io" class="footer-link">upperbound.io</a>
+  </p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky-bar">
+  <div>
+    <div class="sticky-price">$497</div>
+    <div class="sticky-label">90-min AI Audit · Book Your Audit Now</div>
+  </div>
+  <a href="https://link.fastpaydirect.com/payment-link/6a1786f7c3ea3a19f0bd8d25" class="sticky-btn">Book Your Audit Now →</a>
+</div>
+
+<script>
+  function toggleFaq(el) {
+    var isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) el.classList.add('open');
+  }
+
+  var bar    = document.getElementById('sticky-bar');
+  var anchor = document.getElementById('hero-anchor');
+  var obs    = new IntersectionObserver(function(e) {
+    bar.classList.toggle('visible', !e[0].isIntersecting);
+  }, { threshold: 0 });
+  obs.observe(anchor);
+</script>
+
+</body>
+</html>
